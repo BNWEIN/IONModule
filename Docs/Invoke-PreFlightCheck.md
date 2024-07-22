@@ -7,29 +7,8 @@ This function performs a pre-flight check before connecting to the API. It check
 
 #### EXAMPLE 1
 ```powershell
-P
->
- 
-I
-n
-v
-o
-k
-e
--
-P
-r
-e
-F
-l
-i
-g
-h
-t
-C
-h
-e
-c
-k
+PS > Invoke-PreFlightCheck
+
+This example invokes a pre-flight check before connecting to the API.
 ```
 
