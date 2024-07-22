@@ -54,7 +54,7 @@ access_expires_in refresh_expires_in
 
 # Cmdlet Help
 ## Get-Requests
-- [Get-AccessToken](./Docs/Get-AccessToken.md)
+- [Get-AccessTokenExpiry](./Docs/Get-AccessTokenExpiry.md)
 - [Get-AllClients](./Docs/Get-AllClients.md)
 - [Get-Client](./Docs/Get-Client.md)
 - [Get-CustomerOrders](./Docs/Get-CustomerOrders.md)

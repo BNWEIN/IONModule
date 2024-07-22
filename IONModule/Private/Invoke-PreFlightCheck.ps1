@@ -10,6 +10,8 @@
 
 .EXAMPLE
     Invoke-PreFlightCheck
+
+    This example invokes a pre-flight check before connecting to the API.
 #>
 
 function Invoke-PreFlightCheck {
