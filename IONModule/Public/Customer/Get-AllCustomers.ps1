@@ -1,12 +1,12 @@
 <#
 .SYNOPSIS
-Retrieves a list of clients based on specified filters.
+Retrieves a list of customers based on specified filters.
 
 .DESCRIPTION
-The Get-AllClients function retrieves a list of clients from the specified API endpoint. It allows you to filter the results based on various parameters such as page size, customer email, customer domain, customer status, and customer name.
+The Get-AllCustomers function retrieves a list of customers from the specified API endpoint. It allows you to filter the results based on various parameters such as page size, customer email, customer domain, customer status, and customer name.
 
 .PARAMETER PageSize
-Specifies the maximum number of clients to retrieve per page. The default value is 1000.
+Specifies the maximum number of customers to retrieve per page. The default value is 1000.
 
 .PARAMETER CustomerEmail
 Specifies the email address of the customer to filter the results. This parameter is optional.
@@ -21,13 +21,13 @@ Specifies the status of the customer to filter the results. Valid values are "AC
 Specifies the name of the customer to filter the results. This parameter is optional.
 
 .EXAMPLE
-Get-AllClients -PageSize 500 -CustomerEmail "example@example.com" -CustomerStatus "ACTIVE"
+Get-AllCustomers -PageSize 500 -CustomerEmail "example@example.com" -CustomerStatus "ACTIVE"
 
-This example retrieves a list of active clients with a page size of 500 and filters the results based on the customer email address.
+This example retrieves a list of active customers with a page size of 500 and filters the results based on the customer email address.
 
 #>
 
-function Get-AllClients {
+function Get-AllCustomers {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $false)]
