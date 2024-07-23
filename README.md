@@ -90,7 +90,7 @@ access_expires_in refresh_expires_in
 - [Set-KeyVaultDetails](./Docs/Set-KeyVaultDetails.md)
 
 # Future Releases
-- ~~ Add Azure Keyvault functionality~~ Complete
+- ~~Add Azure Keyvault functionality~~ Complete
 - Add additional endpoints 
 
 
