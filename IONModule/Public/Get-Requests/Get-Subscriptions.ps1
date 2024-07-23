@@ -1,47 +1,83 @@
 <#
 .SYNOPSIS
-Retrieves customer subscriptions based on specified parameters.
+    Retrieves subscriptions based on specified criteria.
 
 .DESCRIPTION
-The Get-Subscriptions function retrieves customer subscriptions based on the specified parameters. It sends a request to the specified API endpoint with the provided parameters and returns the response.
+    The Get-Subscriptions function retrieves subscriptions based on the specified criteria such as customer ID, subscription ID, reseller ID, provider ID, subscription status, date range, billing term, billing cycle, customer name, and pagination limit.
 
 .PARAMETER CustomerID
-The ID of the customer for which to retrieve subscriptions. This parameter is mandatory.
+    Specifies the customer ID for filtering subscriptions.
 
 .PARAMETER SubscriptionID
-The ID of the specific subscription to retrieve. This parameter is optional.
+    Specifies the subscription ID for filtering subscriptions.
 
 .PARAMETER ResellerID
-The ID of the reseller associated with the subscriptions. This parameter is optional.
+    Specifies the reseller ID for filtering subscriptions.
 
 .PARAMETER ProviderID
-The ID of the provider associated with the subscriptions. This parameter is optional.
+    Specifies the provider ID for filtering subscriptions.
 
 .PARAMETER SubscriptionStatus
-The status of the subscriptions to retrieve. Valid values are: ACCEPTED, ACTIVE, AVAILABLE, CANCELLED, COMPLETE, CONFIRMED, DELETED, DISABLED, ENABLED, ERROR, EXPIRED, FAILED, IN_PROGRESS, PAUSED, PENDING, RUNNING, STOPPED, SUSPENDED. This parameter is optional.
+    Specifies the subscription status for filtering subscriptions. Valid values are:
+    - ACCEPTED
+    - ACTIVE
+    - AVAILABLE
+    - CANCELLED
+    - COMPLETE
+    - CONFIRMED
+    - DELETED
+    - DISABLED
+    - ENABLED
+    - ERROR
+    - EXPIRED
+    - FAILED
+    - IN_PROGRESS
+    - PAUSED
+    - PENDING
+    - RUNNING
+    - STOPPED
+    - SUSPENDED
 
 .PARAMETER Range
-The date range for which to retrieve subscriptions. Valid values are: TODAY, MONTH_TO_DATE, QUARTER_TO_DATE, YEAR_TO_DATE, LAST_MONTH, LAST_365_DAYS, LAST_QUARTER, LAST_YEAR, LATEST_MONTH, WEEK_TO_DATE, LAST_WEEK, TWO_MONTHS_AGO. This parameter is optional.
+    Specifies the date range for filtering subscriptions. Valid values are:
+    - TODAY
+    - MONTH_TO_DATE
+    - QUARTER_TO_DATE
+    - YEAR_TO_DATE
+    - LAST_MONTH
+    - LAST_365_DAYS
+    - LAST_QUARTER
+    - LAST_YEAR
+    - LATEST_MONTH
+    - WEEK_TO_DATE
+    - LAST_WEEK
+    - TWO_MONTHS_AGO
 
 .PARAMETER Term
-The billing term of the subscriptions. Valid values are: MONTHLY, ANNUAL. This parameter is optional.
+    Specifies the billing term for filtering subscriptions. Valid values are:
+    - MONTHLY
+    - ANNUAL
 
 .PARAMETER BillingCycle
-The billing cycle of the subscriptions. Valid values are: MONTHLY, ANNUAL. This parameter is optional.
+    Specifies the billing cycle for filtering subscriptions. Valid values are:
+    - MONTHLY
+    - ANNUAL
 
 .PARAMETER CustomerName
-The name of the customer for which to retrieve subscriptions. This parameter is optional.
+    Specifies the customer name for filtering subscriptions.
+
+.PARAMETER PaginationLimit
+    Specifies the maximum number of subscriptions to retrieve per page.
 
 .EXAMPLE
-Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH"
-Retrieves all active subscriptions for the customer with ID "12345" that were created in the last month.
+    Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH" -Term "MONTHLY" -BillingCycle "MONTHLY" -PaginationLimit 10
+    Retrieves active subscriptions for the customer with ID "12345" that were created in the last month, have a monthly billing term and cycle, and limits the result to 10 subscriptions per page.
 
 #>
-
 function Get-Subscriptions {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $false)]
         [string]$CustomerID,
         [Parameter(Mandatory = $false)]
         [guid]$SubscriptionID,
@@ -100,7 +136,9 @@ function Get-Subscriptions {
             )]
         [string]$BillingCycle,
         [Parameter(Mandatory = $false)]
-        [string]$CustomerName
+        [string]$CustomerName,
+        [Parameter(Mandatory = $false)]
+        [int]$PaginationLimit
     )
 
     $Endpoint = "/api/v3/accounts/$script:AccountID/subscriptions"
@@ -115,6 +153,10 @@ function Get-Subscriptions {
         billingTerm                         = $Term
         billingCycle                        = $BillingCycle
         customerName                        = $CustomerName
+    }
+
+    if ($PaginationLimit) {
+        $Params.Add("pagination.limit", $PaginationLimit)
     }
 
     Invoke-TDRestMethod -Endpoint $Endpoint -params $Params

@@ -12,7 +12,7 @@
 RootModule = 'IONModule.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@ CompanyName = 'Prime Networks'
 Copyright = '(c) Ben Weinberg. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Powershell Module for TD Synexx ION API'
+Description = 'Powershell Module for TD Synnex ION API'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '7.0'

@@ -4,7 +4,7 @@ function New-MarkdownHelpPathTree {
 
 $Readme = Get-Content .\README.md -Raw
 $NewReadme = ($Readme -split '# Cmdlet Help')[0]
-#$NewReadMeBottom = ($Readme -split '## Advanced Usage Examples')[1]
+$NewReadMeBottom = ($Readme -split '# Future Releases')[1]
 
 $Folders = Get-ChildItem .\IONModule\Public
 $NewReadme = $NewReadme + '# Cmdlet Help'
@@ -22,6 +22,10 @@ foreach ($Folder in $Folders) {
         }
     }
 }
+
+$NewReadme = $NewReadme + '
+
+# Future Releases' + $NewReadMeBottom
 
 $NewReadme | Set-Content -Path .\README.md
 }

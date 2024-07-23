@@ -1,6 +1,6 @@
 ## What is this?
 
-This is the code for a [PowerShell](https://microsoft.com/powershell) module for [TD Synexx ION](https://ion.tdsynnex.com/v2/login). It is a work in progress and it does have a generic 'Invoke-TDRestMethod' available so you can make any API call you want. See advanced usage examples below. 
+This is the code for a [PowerShell](https://microsoft.com/powershell) module for [TD Synnex ION](https://ion.tdsynnex.com/v2/login). It is a work in progress and it does have a generic 'Invoke-TDRestMethod' available so you can make any API call you want. See advanced usage examples below. 
 
 The module is written for [PowerShell 7](https://docs.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-71?view=powershell-7.1). 
 
@@ -30,14 +30,34 @@ Update-Module -Name IONModule
 
 ## Getting Started
 
-The first and probably most important requirement for this module is getting it connected to the API.
+Whilst this module can be used without an Azure Keyvault, you would need a new refresh token every 2 hours which is a manual process of going to the ION portal, and getting a new refresh token. This is because ION have made their refresh tokens single use. Instead I recommend you setup an Azure Keyvault, store your initial refresh token in the keyvault, and use the "Advanced" connection method mentioned [HERE](#connecting-the-powerShell-module-with-your-refresh-token-being-stored-in-an-azure-keyvault)
 
+Otherwise if you are going to manually enter your refresh token, please see below
 
-### Connecting the PowerShell module to the API
+### Connecting the PowerShell module to the API using a manually entered refresh token. 
 
 1. Set API Connection details
 ```powershell
 Set-APIDetails -Refreshtoken "YourRefreshTokenGoesHere" -AccountID "Your Account ID goes here"
+```
+
+2. Test your first call to the API
+```powershell
+Get-AccessTokenExpiry
+```
+
+If the above returns something similar to the below, then you are connected to the API
+```
+access_expires_in refresh_expires_in
+----------------- ------------------
+             7199            2764774
+```
+
+### Connecting the PowerShell module with your refresh token being stored in an Azure Keyvault. 
+
+1. Set KeyVault Details
+```powershell
+Set-KeyVaultDetails -AzureSubscriptionId "31df7912-4fc7-4ce7-b7a8-2cece6fbe51d" -KeyVaultName "YourKeyVaultName" -KeyVaultSecretName "YourKeyVaultSecretName" -AccountID "Your ION Account ID"
 ```
 
 2. Test your first call to the API
@@ -58,11 +78,20 @@ access_expires_in refresh_expires_in
 - [Get-AllClients](./Docs/Get-AllClients.md)
 - [Get-Client](./Docs/Get-Client.md)
 - [Get-CustomerOrders](./Docs/Get-CustomerOrders.md)
-- [Get-CustomerSubscriptions](./Docs/Get-CustomerSubscriptions.md)
 - [Get-ProvisioningTemplate](./Docs/Get-ProvisioningTemplate.md)
+- [Get-Subscriptions](./Docs/Get-Subscriptions.md)
 ## Post-Requests
 - [Set-Renewal](./Docs/Set-Renewal.md)
 ## Invoke-TDRestMethod
 - [Invoke-TDRestMethod](./Docs/Invoke-TDRestMethod.md)
 ## Set-APIDetails
 - [Set-APIDetails](./Docs/Set-APIDetails.md)
+## Set-KeyVaultDetails
+- [Set-KeyVaultDetails](./Docs/Set-KeyVaultDetails.md)
+
+# Future Releases
+- ~~Add Azure Keyvault functionality~~ Complete
+- Add additional endpoints 
+
+
+
