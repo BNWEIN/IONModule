@@ -1,14 +1,14 @@
 # Invoke-PreFlightCheck
 ## SYNOPSIS
-Invokes a pre-flight check before connecting to the API.
+Performs pre-flight checks before executing the main logic of the script.
 ## DESCRIPTION
-This function performs a pre-flight check before connecting to the API. It checks if the RefreshToken information is available and if the token has expired. If the RefreshToken information is not found or the token has expired, it connects to the API.
+The Invoke-PreFlightCheck function is responsible for performing pre-flight checks before executing the main logic of the script. It checks if the required information, such as the refresh token and KeyVault name, is available. If any of the required information is missing, an exception is thrown. It also checks if the token has expired or not found, and connects to the API if necessary.
 # PARAMETERS
 
 #### EXAMPLE 1
 ```powershell
 PS > Invoke-PreFlightCheck
 
-This example invokes a pre-flight check before connecting to the API.
+This example Performs pre-flight checks before executing the main logic of the script.
 ```
 

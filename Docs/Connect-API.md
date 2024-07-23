@@ -1,18 +1,30 @@
 # Connect-API
 ## SYNOPSIS
-Connects to the API using a refresh token.
+Connects to the ION API using a refresh token.
 ## DESCRIPTION
-The Connect-API function is used to establish a connection to the API by providing a refresh token. It retrieves an access token from the API server and sets the necessary variables for authentication.
+The Connect-API function connects to the API by requesting a new access token using a refresh token. It also provides the option to update a KeyVault with the new refresh token.
 # PARAMETERS
 
 ## **-RefreshToken**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-$Script:RefreshToken-Blue?color=5547a8)\
-The refresh token to be used for obtaining the access token. If not provided, the function will use the value stored in the $Script:RefreshToken variable.
+The refresh token used to request a new access token. If not provided, the function will attempt to retrieve the refresh token from the script's global scope.
+
+  ## **-AzureSubscriptionId**
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-$Script:AzureSubscriptionId-Blue?color=5547a8)\
+The Azure subscription ID used to update the KeyVault with the new refresh token. This parameter is optional.
+
+  ## **-KeyVaultName**
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-$Script:KeyVaultName-Blue?color=5547a8)\
+The name of the KeyVault used to store the refresh token. This parameter is optional.
+
+  ## **-KeyVaultSecretName**
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-$Script:KeyVaultSecretName-Blue?color=5547a8)\
+The name of the secret in the KeyVault that stores the refresh token. This parameter is optional.
 
  #### EXAMPLE 1
 ```powershell
-PS > Connect-API -RefreshToken "xxxxxxxxxxxx"
+PS > Connect-API -RefreshToken "abc123" -AzureSubscriptionId "12345678-1234-1234-1234-1234567890ab" -KeyVaultName "MyKeyVault" -KeyVaultSecretName "RefreshTokenSecret"
 
-This example connects to the API using the specified refresh token.
+Connects to the API using the provided refresh token and updates the specified KeyVault with the new refresh token.
 ```
 

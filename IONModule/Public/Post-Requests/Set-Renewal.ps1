@@ -31,6 +31,8 @@ The display name of the subscription.
 
 .EXAMPLE
 Set-Renewal -customerID "12345" -ProductId "Microsoft365EandFNCE-uknce" -SkuID "USCFQ7TTC0LH180001" -PlanID "Microsoft-365-Business-Basic" -SubscriptionID "b9bd9b30-6ae3-4d15-c438-f3cde89888ea" -Quantity 1 -AutoRenew "auto-on" -SubscriptionName "Microsoft 365 Business Basic"
+
+This example sets the renewal settings for a subscription with the specified parameters.
 #>
 
 function Set-Renewal {

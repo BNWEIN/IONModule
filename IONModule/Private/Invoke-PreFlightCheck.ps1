@@ -1,36 +1,37 @@
 <#
 .SYNOPSIS
-    Invokes a pre-flight check before connecting to the API.
+    Performs pre-flight checks before executing the main logic of the script.
 
 .DESCRIPTION
-    This function performs a pre-flight check before connecting to the API. It checks if the RefreshToken information is available and if the token has expired. If the RefreshToken information is not found or the token has expired, it connects to the API.
+    The Invoke-PreFlightCheck function is responsible for performing pre-flight checks before executing the main logic of the script. It checks if the required information, such as the refresh token and KeyVault name, is available. If any of the required information is missing, an exception is thrown. It also checks if the token has expired or not found, and connects to the API if necessary.
 
 .PARAMETER None
     This function does not accept any parameters.
 
 .EXAMPLE
     Invoke-PreFlightCheck
-
-    This example invokes a pre-flight check before connecting to the API.
+    
+    This example Performs pre-flight checks before executing the main logic of the script.
 #>
 
 function Invoke-PreFlightCheck {
     [CmdletBinding()]
     param ()
 
-    if ($null -eq $Script:refreshToken) {
-        throw "Cannot continue: RefreshToken information not found. Please run Set-APIDetails before connecting to the API."
-        break
+    if ($null -eq $Script:refreshToken -and $null -eq $Script:KeyVaultName) {
+        if ($null -eq $Script:refreshToken) {
+            throw "RefreshToken information not found"
+            break
+        } else {
+            throw "KeyVault information not found"
+            break
+        }
     }
 
     Get-TokenExpiry
 
     if ((-not $Script:ExpiryDateTime) -or ($script:ExpiryDateTime -lt (Get-Date))) {
-        write-Verbose "Token expired or not found. Connecting to CIPP"
-        #$request = @{
-        #    refresh_token = $script:refreshToken
-        #    grant_type = "refresh_token"
-        #}
+        write-Verbose "Token expired or not found. Connecting to API"
 
         Connect-API
     }

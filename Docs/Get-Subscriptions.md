@@ -1,48 +1,52 @@
 # Get-Subscriptions
 ## SYNOPSIS
-Retrieves customer subscriptions based on specified parameters.
+Retrieves subscriptions based on specified criteria.
 ## DESCRIPTION
-The Get-Subscriptions function retrieves customer subscriptions based on the specified parameters. It sends a request to the specified API endpoint with the provided parameters and returns the response.
+The Get-Subscriptions function retrieves subscriptions based on the specified criteria such as customer ID, subscription ID, reseller ID, provider ID, subscription status, date range, billing term, billing cycle, customer name, and pagination limit.
 # PARAMETERS
 
 ## **-CustomerID**
-> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-TRUE-Red?) \
-The ID of the customer for which to retrieve subscriptions. This parameter is mandatory.
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
+Specifies the customer ID for filtering subscriptions.
 
   ## **-SubscriptionID**
 > ![Foo](https://img.shields.io/badge/Type-Guid-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The ID of the specific subscription to retrieve. This parameter is optional.
+Specifies the subscription ID for filtering subscriptions.
 
   ## **-ResellerID**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The ID of the reseller associated with the subscriptions. This parameter is optional.
+Specifies the reseller ID for filtering subscriptions.
 
   ## **-ProviderID**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The ID of the provider associated with the subscriptions. This parameter is optional.
+Specifies the provider ID for filtering subscriptions.
 
   ## **-SubscriptionStatus**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The status of the subscriptions to retrieve. Valid values are: ACCEPTED, ACTIVE, AVAILABLE, CANCELLED, COMPLETE, CONFIRMED, DELETED, DISABLED, ENABLED, ERROR, EXPIRED, FAILED, IN_PROGRESS, PAUSED, PENDING, RUNNING, STOPPED, SUSPENDED. This parameter is optional.
+Specifies the subscription status for filtering subscriptions. Valid values are: - ACCEPTED - ACTIVE - AVAILABLE - CANCELLED - COMPLETE - CONFIRMED - DELETED - DISABLED - ENABLED - ERROR - EXPIRED - FAILED - IN_PROGRESS - PAUSED - PENDING - RUNNING - STOPPED - SUSPENDED
 
   ## **-Range**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The date range for which to retrieve subscriptions. Valid values are: TODAY, MONTH_TO_DATE, QUARTER_TO_DATE, YEAR_TO_DATE, LAST_MONTH, LAST_365_DAYS, LAST_QUARTER, LAST_YEAR, LATEST_MONTH, WEEK_TO_DATE, LAST_WEEK, TWO_MONTHS_AGO. This parameter is optional.
+Specifies the date range for filtering subscriptions. Valid values are: - TODAY - MONTH_TO_DATE - QUARTER_TO_DATE - YEAR_TO_DATE - LAST_MONTH - LAST_365_DAYS - LAST_QUARTER - LAST_YEAR - LATEST_MONTH - WEEK_TO_DATE - LAST_WEEK - TWO_MONTHS_AGO
 
   ## **-Term**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The billing term of the subscriptions. Valid values are: MONTHLY, ANNUAL. This parameter is optional.
+Specifies the billing term for filtering subscriptions. Valid values are: - MONTHLY - ANNUAL
 
   ## **-BillingCycle**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The billing cycle of the subscriptions. Valid values are: MONTHLY, ANNUAL. This parameter is optional.
+Specifies the billing cycle for filtering subscriptions. Valid values are: - MONTHLY - ANNUAL
 
   ## **-CustomerName**
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
-The name of the customer for which to retrieve subscriptions. This parameter is optional.
+Specifies the customer name for filtering subscriptions.
+
+  ## **-PaginationLimit**
+> ![Foo](https://img.shields.io/badge/Type-Int32-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-0-Blue?color=5547a8)\
+Specifies the maximum number of subscriptions to retrieve per page.
 
  #### EXAMPLE 1
 ```powershell
-PS > Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH"
+PS > Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH" -Term "MONTHLY" -BillingCycle "MONTHLY" -PaginationLimit 10
 ```
 
