@@ -77,7 +77,7 @@ function Get-Products {
         'filter.addonId'            = $AddonID
         'filter.skuDisplayName'     = $SkuDisplayName
         'filter.addonDisplayName'   = $AddonDisplayName
-        #'filter.category'           = $Category
+        #'filter.category'           = $Category - This does not work
     }
 
     Invoke-TDRestMethod -Endpoint $Endpoint -params $Params

@@ -66,5 +66,6 @@ function Connect-API {
     $script:AuthHeader = @{ Authorization = "Bearer $($token.access_token)" }
     $script:TokenAcquiredTime = Get-Date
     $script:ExpiresIn = $token.expires_in
+    $script:refreshToken = $token.refresh_token
 
 }
