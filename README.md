@@ -73,15 +73,22 @@ access_expires_in refresh_expires_in
 ```
 
 # Cmdlet Help
-## Get-Requests
+## Access-Authentication
 - [Get-AccessTokenExpiry](./Docs/Get-AccessTokenExpiry.md)
-- [Get-AllClients](./Docs/Get-AllClients.md)
-- [Get-Client](./Docs/Get-Client.md)
+## Catalog
+- [Get-Products](./Docs/Get-Products.md)
+## Customer
+- [Add-Customer](./Docs/Add-Customer.md)
+- [Get-AllCustomers](./Docs/Get-AllCustomers.md)
+- [Get-Customer](./Docs/Get-Customer.md)
+- [Get-CustomerCloudProfiles](./Docs/Get-CustomerCloudProfiles.md)
+## Order
 - [Get-CustomerOrders](./Docs/Get-CustomerOrders.md)
-- [Get-ProvisioningTemplate](./Docs/Get-ProvisioningTemplate.md)
-- [Get-Subscriptions](./Docs/Get-Subscriptions.md)
-## Post-Requests
 - [Set-Renewal](./Docs/Set-Renewal.md)
+## Provisioning-Template
+- [Get-ProvisioningTemplate](./Docs/Get-ProvisioningTemplate.md)
+## Subscription
+- [Get-Subscriptions](./Docs/Get-Subscriptions.md)
 ## Invoke-TDRestMethod
 - [Invoke-TDRestMethod](./Docs/Invoke-TDRestMethod.md)
 ## Set-APIDetails
@@ -92,6 +99,3 @@ access_expires_in refresh_expires_in
 # Future Releases
 - ~~Add Azure Keyvault functionality~~ Complete
 - Add additional endpoints 
-
-
-

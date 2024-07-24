@@ -39,7 +39,12 @@ function Connect-API {
     )
     if ($Script:AzureSubscriptionId) {
         Write-Verbose "RefreshToken not provided. Connecting to KeyVault to retrieve RefreshToken"
+        try {
         $refreshToken = (Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $KeyVaultSecretName -AsPlainText -ErrorAction Stop)
+        } catch {
+            Connect-AzAccount | Out-Null
+            $refreshToken = (Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $KeyVaultSecretName -AsPlainText -ErrorAction Stop)
+        }
     }
 
     $Script:formData = @{

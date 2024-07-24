@@ -1,19 +1,19 @@
 <#
 .SYNOPSIS
-Retrieves client information based on the provided CustomerID.
+Retrieves customer information based on the provided CustomerID.
 
 .DESCRIPTION
-The Get-Client function retrieves client information from an API endpoint based on the provided CustomerID. It requires the CustomerID parameter to be specified.
+The Get-Customer function retrieves customer information from an API endpoint based on the provided CustomerID. It requires the CustomerID parameter to be specified.
 
 .PARAMETER CustomerID
 Specifies the ID of the customer for which to retrieve information.
 
 .EXAMPLE
-Get-Client -CustomerID "12345"
+Get-Customer -CustomerID "12345"
 Retrieves client information for the customer with ID "12345".
 
 #>
-function Get-Client {
+function Get-Customer {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
