@@ -10,7 +10,8 @@ Specifies the ID of the customer for which to retrieve information.
 
 .EXAMPLE
 Get-Customer -CustomerID "12345"
-Retrieves client information for the customer with ID "12345".
+
+This example retrieves customer information for the customer with ID "12345".
 
 #>
 function Get-Customer {

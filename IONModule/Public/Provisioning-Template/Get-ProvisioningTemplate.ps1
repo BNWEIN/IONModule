@@ -16,7 +16,8 @@ Specifies the action to perform with the provisioning template. Valid values are
 
 .EXAMPLE
 Get-ProvisioningTemplate -vendor "MICROSOFT"
-Retrieves a provisioning template from MICROSOFT Cloud Platform with the default provider and action.
+
+This example retrieves a provisioning template from MICROSOFT Cloud Platform with the default provider and action.
 
 #>
 
