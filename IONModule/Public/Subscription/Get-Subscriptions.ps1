@@ -139,7 +139,15 @@ function Get-Subscriptions {
         [Parameter(Mandatory = $false)]
         [string]$CustomerName,
         [Parameter(Mandatory = $false)]
-        [int]$PaginationLimit
+        [int]$PaginationLimit,
+        [Parameter(Mandatory = $false)]
+        [string]$PaginationOffset,
+        [Parameter(Mandatory = $false)]
+        [ValidateSet(
+            "ASC",
+            "DESC"
+            )]
+        [string]$SortOrder
     )
 
     $Endpoint = "/api/v3/accounts/$script:AccountID/subscriptions"
@@ -158,6 +166,12 @@ function Get-Subscriptions {
 
     if ($PaginationLimit) {
         $Params.Add("pagination.limit", $PaginationLimit)
+    }
+    if ($PaginationOffset) {
+        $Params.Add("pagination.offset", $PaginationOffset)
+    }
+    if ($SortOrder) {
+        $Params.Add("pagination.sortOrder", $SortOrder)
     }
 
     Invoke-TDRestMethod -Endpoint $Endpoint -params $Params
