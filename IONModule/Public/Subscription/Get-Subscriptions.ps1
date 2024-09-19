@@ -126,8 +126,8 @@ function Get-Subscriptions {
         [string]$Range,
         [Parameter(Mandatory = $false)]
         [ValidateSet(
-            "MONTHLY",
-            "ANNUAL"
+            "P1Y",
+            "P1M"
             )]
         [string]$Term,
         [Parameter(Mandatory = $false)]
