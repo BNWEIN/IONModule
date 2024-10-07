@@ -45,8 +45,18 @@ Specifies the customer name for filtering subscriptions.
 > ![Foo](https://img.shields.io/badge/Type-Int32-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-0-Blue?color=5547a8)\
 Specifies the maximum number of subscriptions to retrieve per page.
 
+  ## **-PaginationOffset**
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
+
+
+  ## **-SortOrder**
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) \
+
+
  #### EXAMPLE 1
 ```powershell
 PS > Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH" -Term "MONTHLY" -BillingCycle "MONTHLY" -PaginationLimit 10
+
+This example retrieves active subscriptions for the customer with ID "12345" that were created in the last month, have a monthly billing term and cycle, and limits the result to 10 subscriptions per page.
 ```
 

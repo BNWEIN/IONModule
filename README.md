@@ -76,18 +76,26 @@ access_expires_in refresh_expires_in
 ## Access-Authentication
 - [Get-AccessTokenExpiry](./Docs/Get-AccessTokenExpiry.md)
 ## Catalog
+- [Get-Categories](./Docs/Get-Categories.md)
+- [Get-Charges](./Docs/Get-Charges.md)
+- [Get-Product](./Docs/Get-Product.md)
 - [Get-Products](./Docs/Get-Products.md)
+- [Get-Verticals](./Docs/Get-Verticals.md)
+- [Set-Product](./Docs/Set-Product.md)
 ## Customer
 - [Add-Customer](./Docs/Add-Customer.md)
 - [Get-AllCustomers](./Docs/Get-AllCustomers.md)
 - [Get-Customer](./Docs/Get-Customer.md)
 - [Get-CustomerCloudProfiles](./Docs/Get-CustomerCloudProfiles.md)
+- [Set-Customer](./Docs/Set-Customer.md)
 ## Order
 - [Get-CustomerOrders](./Docs/Get-CustomerOrders.md)
-- [Set-Renewal](./Docs/Set-Renewal.md)
+- [New-Order](./Docs/New-Order.md)
+- [Set-Subscription](./Docs/Set-Subscription.md)
 ## Provisioning-Template
-- [Get-ProvisioningTemplate](./Docs/Get-ProvisioningTemplate.md)
+- [Get-ProvisioningTemplates](./Docs/Get-ProvisioningTemplates.md)
 ## Subscription
+- [Get-SubscriptionDetails](./Docs/Get-SubscriptionDetails.md)
 - [Get-Subscriptions](./Docs/Get-Subscriptions.md)
 ## Invoke-TDRestMethod
 - [Invoke-TDRestMethod](./Docs/Invoke-TDRestMethod.md)
@@ -99,3 +107,4 @@ access_expires_in refresh_expires_in
 # Future Releases
 - ~~Add Azure Keyvault functionality~~ Complete
 - Add additional endpoints 
+

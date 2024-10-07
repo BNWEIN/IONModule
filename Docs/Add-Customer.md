@@ -72,5 +72,7 @@ The language code for the customer, formatted as an ISO 639-1 code (e.g., "EN" f
  #### EXAMPLE 1
 ```powershell
 PS > Add-Customer -customerOrganization "ABC Corp" -street "123 Main St" -city "New York" -state "NY" -zip "10001" -country "US" -customerName "John Doe" -customerEmail "johndoe@example.com" -languageCode "EN"
+
+This example adds a new customer with the specified details.
 ```
 
