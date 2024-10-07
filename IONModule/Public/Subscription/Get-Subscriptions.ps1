@@ -71,7 +71,8 @@
 
 .EXAMPLE
     Get-Subscriptions -CustomerID "12345" -SubscriptionStatus "ACTIVE" -Range "LAST_MONTH" -Term "MONTHLY" -BillingCycle "MONTHLY" -PaginationLimit 10
-    Retrieves active subscriptions for the customer with ID "12345" that were created in the last month, have a monthly billing term and cycle, and limits the result to 10 subscriptions per page.
+    
+    This example retrieves active subscriptions for the customer with ID "12345" that were created in the last month, have a monthly billing term and cycle, and limits the result to 10 subscriptions per page.
 
 #>
 function Get-Subscriptions {
@@ -125,8 +126,8 @@ function Get-Subscriptions {
         [string]$Range,
         [Parameter(Mandatory = $false)]
         [ValidateSet(
-            "MONTHLY",
-            "ANNUAL"
+            "P1Y",
+            "P1M"
             )]
         [string]$Term,
         [Parameter(Mandatory = $false)]
@@ -138,7 +139,15 @@ function Get-Subscriptions {
         [Parameter(Mandatory = $false)]
         [string]$CustomerName,
         [Parameter(Mandatory = $false)]
-        [int]$PaginationLimit
+        [int]$PaginationLimit,
+        [Parameter(Mandatory = $false)]
+        [string]$PaginationOffset,
+        [Parameter(Mandatory = $false)]
+        [ValidateSet(
+            "ASC",
+            "DESC"
+            )]
+        [string]$SortOrder
     )
 
     $Endpoint = "/api/v3/accounts/$script:AccountID/subscriptions"
@@ -157,6 +166,12 @@ function Get-Subscriptions {
 
     if ($PaginationLimit) {
         $Params.Add("pagination.limit", $PaginationLimit)
+    }
+    if ($PaginationOffset) {
+        $Params.Add("pagination.offset", $PaginationOffset)
+    }
+    if ($SortOrder) {
+        $Params.Add("pagination.sortOrder", $SortOrder)
     }
 
     Invoke-TDRestMethod -Endpoint $Endpoint -params $Params

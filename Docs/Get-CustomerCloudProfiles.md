@@ -16,9 +16,13 @@ The ID of the customer for which to retrieve the cloud profiles.
  #### EXAMPLE 1
 ```powershell
 PS > Get-CustomerCloudProfiles -CustomerID "12345"
+
+This example retrieves all cloud profiles for the customer with ID "12345".
 ```
  #### EXAMPLE 2
 ```powershell
 PS > Get-CustomerCloudProfiles -CustomerID "12345" -ProviderID "67890"
+
+This example retrieves the cloud profiles for the customer with ID "12345" that are associated with the provider with ID "67890".
 ```
 
