@@ -93,8 +93,8 @@ function Add-Customer {
         [string]$primaryContactFirstName,
         [Parameter(Mandatory = $false)]
         [string]$primaryContactLastName,
-        [Parameter(Mandatory = $true)]
-        [string]$languageCode
+        [Parameter(Mandatory = $false)]
+        [string]$languageCode = "EN"
     )
 
     $Endpoint = "/api/v3/accounts/$script:AccountID/customers"

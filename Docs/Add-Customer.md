@@ -66,7 +66,7 @@ The email address of the customer.
 (Optional) The last name of the primary contact person.
 
   ## **-languageCode**
-> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-TRUE-Red?) \
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-EN-Blue?color=5547a8)\
 The language code for the customer, formatted as an ISO 639-1 code (e.g., "EN" for English).
 
  #### EXAMPLE 1
