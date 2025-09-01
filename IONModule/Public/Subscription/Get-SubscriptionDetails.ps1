@@ -29,7 +29,7 @@ function Get-SubscriptionDetails {
     $Endpoint = "/api/v3/accounts/$script:AccountID/customers/$CustomerID/subscriptions/$ID"
 
     $Params = @{
-        refresh                             = $true
+        refresh                             = $false
     }
 
     Invoke-TDRestMethod -Endpoint $Endpoint -params $Params
